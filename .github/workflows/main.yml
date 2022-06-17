@@ -29,16 +29,25 @@ jobs:
           npm install
           npm run build
 
-      - name: Deploy and S3 sync
-        uses: reggionick/s3-deploy@v3
-        #uses: jakejarvis/s3-sync-action@main
-        with:
-          folder: .next
-          bucket: ${{ secrets.AWS_S3_BUCKET }}
-          bucket-region: us-west-2
-          #dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-          invalidation: /
-          delete-removed: true
-          no-cache: true
-          private: true
+
+    - uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --follow-symlinks --delete
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
+
+      # - name: Deploy and S3 sync
+      #   uses: reggionick/s3-deploy@v3
+      #   #uses: jakejarvis/s3-sync-action@main
+      #   with:
+      #     folder: .next
+      #     bucket: ${{ secrets.AWS_S3_BUCKET }}
+      #     bucket-region: us-west-2
+      #     #dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+      #     invalidation: /
+      #     delete-removed: true
+      #     no-cache: true
+      #     private: true
       
