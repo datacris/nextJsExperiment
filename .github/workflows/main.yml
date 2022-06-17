@@ -15,14 +15,14 @@ jobs:
         with:
           node-version: '12'
 
-      - name: Configure AWS credentials
-        id: aws-configure-credentials
-        uses: aws-actions/configure-aws-credentials@ea7b857d8a33dc2fb4ef5a724500044281b49a5e
-        with:
-          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
-          role-duration-seconds: 3600
-          aws-region: us-west-2
+      # - name: Configure AWS credentials
+      #   id: aws-configure-credentials
+      #   uses: aws-actions/configure-aws-credentials@ea7b857d8a33dc2fb4ef5a724500044281b49a5e
+      #   with:
+      #     aws-access-key-id: ${{ secrets.ACCESS_KEY }}
+      #     aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+      #     role-duration-seconds: 3600
+      #     aws-region: us-west-2
         
       - name: npm install & build
         run: |
