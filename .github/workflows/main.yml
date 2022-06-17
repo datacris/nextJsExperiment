@@ -37,7 +37,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
-          SOURCE_DIR: '.next'
+          SOURCE_DIR: 'out'
 
       # - name: Deploy and S3 sync
       #   uses: reggionick/s3-deploy@v3
